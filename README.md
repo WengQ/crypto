@@ -1,5 +1,5 @@
 # 常用密码学算法原理以及实现
-##Diffie-Hellman密钥交换原理
+#Diffie-Hellman密钥交换原理
 - 1）选择大素数p，选择一个整数m∈{2，3，……，p-2}，p，m公开
 - 2）Alice和Bob分别随机选择a，b∈{2，3，……，p-2}，a，b是各自的私钥，保密
 - 3）分别计算m^aA mod p，m^bB mod p
