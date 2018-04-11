@@ -22,7 +22,7 @@ RSA公钥为(n，e)，私钥为(d)
 
 ## 加解密过程：
 - RSA加密：给定公钥(n,e)=kpub  ,和明文x，则加密函数为：
-y  x^e mod n，其中x，y属于整数环
+y ≡ x^e mod n，其中x，y属于整数环
 
 - RSA解密：给定私钥dpr以及y，则解密函数为：
-x  y^d mod n，其中x，y属于整数环
+x ≡ y^d mod n，其中x，y属于整数环
