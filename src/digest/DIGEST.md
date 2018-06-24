@@ -17,6 +17,8 @@ JDK可以调用addProvider(new BouncyCastleProvider())来添加BC提供商，也
 Commons Codec也只支持MD2，MD5摘要算法，因为CC源码是对Security包内方法的封装，本质上还是调用JDK实现的，但是更好写（一行就够了）。
 
 总结：CC比JDK简洁，BC补充了JDK没有的MD4
+
+应用：注册账号时在数据库存储“用户名-密码MD5值”的键值对，然后登陆的时候计算密钥的MD5放入请求中，服务器根据用户名找到摘要，即可验证，且无需将密码存放在服务器数据库中。
 ###SHA算法族
 - 
 - 
