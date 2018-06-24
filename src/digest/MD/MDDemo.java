@@ -64,8 +64,9 @@ public class MDDemo {
     //BouncyCastle实现MD5
     public static void bcMD5() {
         Digest md5 = new MD5Digest();
+        //update三个参数分别是源数据，起点，长度。
         md5.update(src.getBytes(),0,src.getBytes().length);
-        //生成和摘要一样长的字节数组md4Digest用于存放md4摘要
+        //额外生成一个和摘要一样长的字节数组md4Digest用于存放md4摘要
         byte[] md5Digest = new byte[md5.getDigestSize()];
         md5.doFinal(md5Digest,0);
         //此处使用BC库Hex类的toHexString方法。
