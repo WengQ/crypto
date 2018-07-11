@@ -42,6 +42,7 @@ public class DESDemo {
         System.out.println("jdk des decrypt: "+new String(result1));//此处要转成String，因为原始数据就是字符串
     }
 
+
     //bcDES
     public static void bcDES() throws Exception{
         Security.addProvider(new BouncyCastleProvider());

@@ -19,6 +19,7 @@ public class MacTest {
     public static void main(String[] args) throws Exception {
         jdkHmacMD5();
         bcHmacMD5();
+        jdkHmacSHA256();
     }
 
     public static void jdkHmacMD5() throws Exception{
@@ -29,12 +30,12 @@ public class MacTest {
         //byte[] key = secretKey.getEncoded();
         byte[] key = Hex.decodeHex(new char[]{'a','a','a','a','a','a'});
 
-        //根据密钥种子还原密钥???
+        //根据编码字节数组还原密钥，这样可以指定密钥的内容
         SecretKey restoreSecretKey = new SecretKeySpec(key,"HmacMD5");
 
         //构建Mac对象
         Mac mac = Mac.getInstance(secretKey.getAlgorithm());
-        //初始化Mac对象
+        //初始化Mac对象，用秘密密钥初始化
         mac.init(restoreSecretKey);
         //获得经过安全消息摘要之后的信息
         byte[] output = mac.doFinal(data);
@@ -50,5 +51,21 @@ public class MacTest {
         hMac.doFinal(output, 0);
 
         System.out.println("bc HmacMD5: " + org.bouncycastle.util.encoders.Hex.toHexString(output));
+    }
+
+    public static void jdkHmacSHA256() throws Exception{
+        KeyGenerator keyGenerator = KeyGenerator.getInstance("HmacSHA256");
+        SecretKey secretKey = keyGenerator.generateKey();
+        //byte[] encodedKey = secretKey.getEncoded();
+
+        Mac mac = Mac.getInstance(secretKey.getAlgorithm());
+        mac.init(secretKey);
+        byte[] output = mac.doFinal();
+
+        System.out.println("jdk HmacSHA256: " + Hex.encodeHexString(output));
+    }
+
+    public static void BCHmacSHA256() throws Exception{
+
     }
 }
